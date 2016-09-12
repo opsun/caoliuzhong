@@ -2,6 +2,7 @@ chrome.extension.onConnect.addListener(function(port) {
   port.onMessage.addListener(function(request) {
         switch(request.action){
             case "doDownload":
+                console.log("do download");
                 chrome.tabs.executeScript(null, {
                     file: "contentscript.js"
                 }, function () {
@@ -25,6 +26,7 @@ chrome.runtime.onMessage.addListener(function (request, sender) {
 });
 
 function parseSource(source){
+    console.log("parse topic url");
     var dom = $(source);
     $(dom).find("h3 a").each(function(){
         var href = $(this).attr("href");
@@ -43,7 +45,11 @@ function parseRmdownHash(topicUrl){
             var regx = /link\.php\?hash=(\w+)/g;
             var result;
             while((result=regx.exec(data))!=null){
-                rmdown(result[1]);
+                var hash = result[1];
+			    if(!localStorage.getItem("rm_"+hash)){
+				    rmdown(hash);
+                    localStorage.setItem("rm_"+hash,1);
+			    }
                 break;
             }
         }
