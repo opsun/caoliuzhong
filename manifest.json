@@ -1,0 +1,28 @@
+{
+	"name": "草榴种",
+	"description": "草榴种",
+	"version": "1.0",
+	"permissions": [
+		"downloads",
+		"tabs",
+		"storage",
+		"<all_urls>"
+	],
+	"background": {
+		"scripts": [
+			"jquery-3.1.0.min.js",
+			"background.js"
+		],
+		"persistent": false
+	},
+	"icons": {
+		"16": "16.png",
+		"48": "48.png",
+		"128": "128.png"
+	},
+	"browser_action": {
+		"default_title": "草榴种",
+		"default_popup": "popup.html"
+	},
+	"manifest_version": 2
+}
