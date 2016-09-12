@@ -2,13 +2,13 @@ chrome.extension.onConnect.addListener(function(port) {
   port.onMessage.addListener(function(request) {
         switch(request.action){
             case "doDownload":
-                /*chrome.tabs.executeScript(null, {
+                chrome.tabs.executeScript(null, {
                     file: "contentscript.js"
                 }, function () {
                     if (chrome.runtime.lastError) {
                         message.innerText = 'There was an error injecting script : \n' + chrome.runtime.lastError.message;
                     }
-                });*/
+                });
                 port.postMessage({action:"downloading"});
                 break;
         }
