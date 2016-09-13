@@ -16,6 +16,6 @@ function DOMtoString(document_root) {
 }
 
 chrome.runtime.sendMessage({
-    action: "getSource",
+    action: "pageContent",
     source: DOMtoString(document)
 });
